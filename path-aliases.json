@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@entities/*": ["entities/*"],
+      "@adapters/*": ["adapters/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@useCases/*": ["usecases/*"],
+      "@utils/*": ["utils/*"]
+    }
+  }
+}
