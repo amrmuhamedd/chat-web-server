@@ -11,19 +11,19 @@ export class UserRepository implements IUserRepository {
   }
 
   async getUserById(userId: string): Promise<User | null> {
-    const user = await UserModel.findById(userId);
+    const user = await UserModel.findById(userId).select("-password");
     return user ? ToUser(user) : null;
   }
 
   async getUserByEmail(email: string): Promise<User | null> {
-    const user = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email }).select("-password");
     return user ? ToUser(user) : null;
   }
 
   async updateUser(user: User): Promise<User | null> {
     const updatedUser = await UserModel.findByIdAndUpdate(user.getId(), user, {
       new: true,
-    });
+    }).select("-password");
     return updatedUser ? ToUser(updatedUser) : null;
   }
 

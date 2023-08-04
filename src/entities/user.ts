@@ -20,12 +20,19 @@ export class User {
     lastName: string;
     email: string;
     username: string;
+    profileImage?: any;
+    meta?: {
+      unRead?: number;
+      status?: STATUS_TYPES;
+    };
   }) {
-    const { firstName, lastName, email, username } = input;
+    const { firstName, lastName, email, username, meta, profileImage } = input;
     this.firstName = firstName;
     this.email = email;
     this.lastName = lastName;
     this.username = username;
+    this.meta = meta;
+    this.profileImage = profileImage;
   }
 
   getId() {
@@ -97,5 +104,17 @@ export class User {
 
   setMeta(meta: { unRead?: number; status?: STATUS_TYPES }) {
     this.meta = meta;
+  }
+
+  toJSON(): any {
+    return {
+      _id: this._id,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      meta: this.meta,
+      profileImage: this.profileImage,
+      username: this.username,
+    };
   }
 }
