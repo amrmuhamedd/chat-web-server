@@ -55,5 +55,5 @@ The project leverages various design patterns to ensure maintainability, scalabi
 
 The application is thoroughly unit tested using Jest and Supertest. Tests cover various scenarios including user authentication, message sending, contact management, and more.
 
-To run tests, use the command:
+To run tests, use the command: `yarn test`
 
