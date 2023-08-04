@@ -6,27 +6,6 @@ This repository contains a chat application built using Node.js, Express, and Mo
 
 The project is structured as follows:
 
-project/
-|-- tests/
-|-- src/
-| |-- adapters/
-| | |-- controllers/
-| | |-- models/
-| | |-- repository/
-| | |-- routes/
-| | |-- mappers/
-| |
-| |-- entities/
-| |
-| |-- interfaces/
-| |
-| |-- useCases/
-| |
-| |-- utils/
-| |
-| |-- server.ts
-|-- tests/
-
 - The `src` directory contains the main application code, structured into modules like `adapters`, `entities`, `interfaces`, `useCases`, and `utils`.
 - The `__tests__` directory contains unit and integration tests for the application.
 - The `server.ts` file is the entry point for the application.
