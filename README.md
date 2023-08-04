@@ -1,3 +1,7 @@
+🚧 **Project Status: Under Development** 🚧
+
+This project is currently under active development. New features, optimizations, and improvements are being added regularly. Please note that some parts of the application may be incomplete or subject to change. We appreciate your interest and patience as we work towards creating a comprehensive and robust chat application. Feel free to explore the existing features and stay tuned for updates!
+
 # Chat Application Project
 
 This repository contains a chat application built using Node.js, Express, and MongoDB. The application allows users to register, log in, send messages, manage contacts, and participate in group chats. The project follows a modular structure, adheres to design patterns, and implements various features for a comprehensive chat experience.
