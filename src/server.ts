@@ -1,7 +1,8 @@
 import "../bootstrap";
 import express, { Express, Request, Response, NextFunction } from "express";
-import { authRoutes } from "./adapters/routes/auth-routes";
-import { connectToMongoDB } from "./adapters/mongodb/mongodb";
+
+import { connectToMongoDB } from "./infrastructure/mongodb/mongodb";
+import { authRoutes } from "webApis/routes/auth-routes";
 
 const app: Express = express();
 const port = 3000; // Set your desired port number

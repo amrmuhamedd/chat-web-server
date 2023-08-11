@@ -1,5 +1,5 @@
-import { UserRepository } from "@adapters/repository/userRepository";
-import { User } from "@entities/user";
+import { UserRepository } from "infrastructure/db/repository/userRepository";
+import { User } from "domain/entities/user";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 

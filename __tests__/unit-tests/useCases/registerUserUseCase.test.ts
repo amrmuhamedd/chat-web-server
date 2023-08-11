@@ -1,7 +1,7 @@
 // src/usecases/register-user-interactor.test.ts
 import { RegisterUserInteractor } from "@useCases/user/registerUserUseCase";
-import { UserRepository } from "@adapters/repository/userRepository";
-import { User } from "@entities/user";
+import { UserRepository } from "infrastructure/db/repository/userRepository";
+import { User } from "domain/entities/user";
 
 jest.mock("@adapters/repository/userRepository");
 

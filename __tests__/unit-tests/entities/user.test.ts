@@ -1,6 +1,6 @@
 // user.test.ts
 
-import { User } from "@entities/user";
+import { User } from "domain/entities/user";
 
 describe("User Entity", () => {
   it("should create a new user and return correct values", () => {
