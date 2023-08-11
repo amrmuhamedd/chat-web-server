@@ -1,5 +1,5 @@
-import { IUser } from "core/application/interfaces/models/userModel";
-import { User } from "core/domain/entities/user";
+import { IUser } from "@app/core/application/interfaces/models/userModel";
+import { User } from "@app/core/domain/entities/user";
 
 export const ToUser = (userDocument: IUser): User => {
   const { _id, firstName, lastName, username, email, meta, profileImage } =

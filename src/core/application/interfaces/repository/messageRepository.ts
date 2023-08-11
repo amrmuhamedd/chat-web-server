@@ -1,4 +1,4 @@
-import { Message } from "core/domain/entities/message";
+import { Message } from "@app/core/domain/entities/message";
 
 interface IMessageRepository {
   createMessage(messageData: Message): Promise<Message>;

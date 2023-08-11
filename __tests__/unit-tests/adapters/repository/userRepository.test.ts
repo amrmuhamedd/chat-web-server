@@ -1,11 +1,12 @@
-import { UserRepository } from "infrastructure/db/repository/userRepository";
-import { User } from "domain/entities/user";
+import { IUserRepository } from "@app/core/application/interfaces/repository/userRepository";
+import { User } from "@app/core/domain/entities/user";
+import { UserRepository } from "@app/infrastructure/db/repository/userRepository";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 
 describe("UserRepository", () => {
   let mongoServer: MongoMemoryServer;
-  let userRepository: UserRepository;
+  let userRepository: IUserRepository;
 
   beforeEach(async () => {
     mongoServer = await MongoMemoryServer.create();

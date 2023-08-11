@@ -1,16 +1,16 @@
-// src/usecases/register-user-interactor.test.ts
-import { RegisterUserInteractor } from "@useCases/user/registerUserUseCase";
-import { UserRepository } from "infrastructure/db/repository/userRepository";
-import { User } from "domain/entities/user";
+import { IUserRepository } from "@app/core/application/interfaces/repository/userRepository";
+import { RegisterUserInteractor } from "@app/core/application/usecases/user/registerUserUseCase";
+import { User } from "@app/core/domain/entities/user";
+import { UserRepository } from "@app/infrastructure/db/repository/userRepository";
 
-jest.mock("@adapters/repository/userRepository");
+jest.mock("@app/infrastructure/db/repository/userRepository");
 
 describe("RegisterUserInteractor", () => {
-  let userRepository: jest.Mocked<UserRepository>;
+  let userRepository: jest.Mocked<IUserRepository>;
 
   beforeEach(() => {
     // Create a mock instance of UserRepository
-    userRepository = new UserRepository() as jest.Mocked<UserRepository>;
+    userRepository = new UserRepository() as jest.Mocked<IUserRepository>;
   });
 
   afterEach(() => {

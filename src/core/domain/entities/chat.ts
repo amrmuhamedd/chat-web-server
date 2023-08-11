@@ -2,24 +2,21 @@ import { User } from "./user";
 import { Message } from "./message";
 
 export class Chat {
-  private _id?: string;
+  private _id!: string;
   private participants: User[];
   private messages: Message[];
 
-  constructor(input: {
-    _id?: string;
-    participants: User[];
-    messages?: Message[];
-  }) {
-    this._id = input._id;
+  constructor(input: { participants: User[]; messages?: Message[] }) {
     this.participants = input.participants;
     this.messages = input.messages || [];
   }
 
-  getId(): string | undefined {
+  getId(): string {
     return this._id;
   }
-
+  setId(id: string) {
+    this._id = id;
+  }
   getParticipants(): User[] {
     return this.participants;
   }

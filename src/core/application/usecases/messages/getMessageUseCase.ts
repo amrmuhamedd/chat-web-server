@@ -1,5 +1,5 @@
-import { IMessageRepository } from "core/application/interfaces/repository/messageRepository";
-import { Message } from "core/domain/entities/message";
+import { Message } from "@app/core/domain/entities/message";
+import { IMessageRepository } from "../../interfaces/repository/messageRepository";
 
 export class GetMessageInteractor {
   private messageRepository: IMessageRepository;

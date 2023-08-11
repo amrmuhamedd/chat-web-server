@@ -1,8 +1,8 @@
 // src/usecases/register-user-interactor.ts
 
-import { IUserRepository } from "core/application/interfaces/repository/userRepository";
-import { hashPassword } from "core/application/utils/auth";
-import { User } from "core/domain/entities/user";
+import { User } from "@app/core/domain/entities/user";
+import { IUserRepository } from "../../interfaces/repository/userRepository";
+import { hashPassword } from "../../utils/auth";
 
 export class RegisterUserInteractor {
   private userRepository: IUserRepository;

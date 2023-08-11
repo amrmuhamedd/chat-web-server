@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { MongoDBContactRepository } from "../../infrastructure/db/repository/contactRepository";
 import { UserRepository } from "../../infrastructure/db/repository/userRepository";
-import { Contact } from "../../domain/entities/contact";
+import { Contact } from "@app/core/domain/entities/contact";
 
 export class ContactController {
   private contactRepository: MongoDBContactRepository;

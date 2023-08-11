@@ -1,14 +1,13 @@
+import { ListMessagesByChatIdInteractor } from "@app/core/application/usecases/messages/listMessagesByChatIdUseCase";
+import { SendMessageUseCase } from "@app/core/application/usecases/messages/sendMessageUseCase";
 import { Request, Response, NextFunction } from "express";
-import { CreateMessageInteractor } from "@useCases/messages/createMessageUseCase";
-import { ListMessagesByChatIdInteractor } from "@useCases/messages/listMessagesByChatIdUseCase";
-import { Message } from "domain/entities/message";
 
 export class MessageController {
-  private createMessageInteractor: CreateMessageInteractor;
+  private createMessageInteractor: SendMessageUseCase;
   private listMessagesByChatIdInteractor: ListMessagesByChatIdInteractor;
 
   constructor(
-    createMessageInteractor: CreateMessageInteractor,
+    createMessageInteractor: SendMessageUseCase,
     listMessagesByChatIdInteractor: ListMessagesByChatIdInteractor
   ) {
     this.createMessageInteractor = createMessageInteractor;
@@ -18,14 +17,7 @@ export class MessageController {
   async createMessage(req: Request, res: Response, next: NextFunction) {
     try {
       const { chatId, senderId, receiverId, text, time } = req.body;
-      const message = await this.createMessageInteractor.createMessage(
-        new Message({
-          chatId,
-          time: time || Date.now().toString(),
-          meta: { sender: senderId as string, receiver: receiverId as string },
-          text,
-        })
-      );
+      const message = await this.createMessageInteractor.sendMessage();
       res.json(message);
     } catch (error) {
       next(error);

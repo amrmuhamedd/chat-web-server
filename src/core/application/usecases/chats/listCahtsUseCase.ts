@@ -1,5 +1,5 @@
-import { IChatRepository } from "core/application/interfaces/repository/chatRepository";
-import { Chat } from "core/domain/entities/chat";
+import { Chat } from "@app/core/domain/entities/chat";
+import { IChatRepository } from "../../interfaces/repository/chatRepository";
 
 export class ListChatsUseCase {
   private chatRepository: IChatRepository;

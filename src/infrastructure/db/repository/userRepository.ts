@@ -1,9 +1,10 @@
 // src/adapters/mongodb-user-repository.ts
-import { ToUser } from "infrastructure/db/mapper/user";
 
+import { User } from "@app/core/domain/entities/user";
 import { UserModel } from "../models/user";
-import { User } from "core/domain/entities/user";
+
 import { IUserRepository } from "core/application/interfaces/repository/userRepository";
+import { ToUser } from "../mapper/user";
 
 export class UserRepository implements IUserRepository {
   async createUser(user: User): Promise<User> {

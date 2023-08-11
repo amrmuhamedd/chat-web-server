@@ -1,5 +1,5 @@
-import { STATUS_TYPES } from "core/application/interfaces/common";
-import { IUser } from "core/application/interfaces/models/userModel";
+import { STATUS_TYPES } from "@app/core/application/interfaces/common";
+import { IUser } from "@app/core/application/interfaces/models/userModel";
 import mongoose, { Types } from "mongoose";
 
 const userSchema = new mongoose.Schema<IUser>({

@@ -1,5 +1,4 @@
-import { Document, Types } from "mongoose";
-import { IMessage } from "./messageModel";
+import { Types } from "mongoose";
 import { IUser } from "./userModel";
 
 interface IChat extends Document {

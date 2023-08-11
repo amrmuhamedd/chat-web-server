@@ -1,6 +1,7 @@
 // src/utils/auth.ts
+import { User } from "@app/core/domain/entities/user";
 import bcrypt from "bcrypt";
-import { User } from "core/domain/entities/user";
+
 import jwt from "jsonwebtoken";
 
 const saltRounds = 10;

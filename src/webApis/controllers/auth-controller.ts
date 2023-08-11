@@ -1,6 +1,7 @@
 // src/adapters/controllers/auth-controller.ts
-import { LoginUserInteractor } from "core/application/usecases/user/login";
-import { RegisterUserInteractor } from "core/application/usecases/user/registerUserUseCase";
+
+import { LoginUserInteractor } from "@app/core/application/usecases/user/login";
+import { RegisterUserInteractor } from "@app/core/application/usecases/user/registerUserUseCase";
 import { Request, Response } from "express";
 
 import { ToUser } from "infrastructure/db/mapper/user";

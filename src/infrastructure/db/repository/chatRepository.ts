@@ -1,7 +1,7 @@
-import { IChatRepository } from "@interfaces/data-access/chatRepository";
-import { Chat } from "domain/entities/chat";
+import { IChatRepository } from "core/application/interfaces/repository/chatRepository";
 import { ChatModel } from "../models/chat";
 import { ToChat } from "infrastructure/db/mapper/chat";
+import { Chat } from "core/domain/entities/chat";
 
 export class ChatRepository implements IChatRepository {
   async createChat(chat: Chat): Promise<Chat> {
@@ -34,5 +34,16 @@ export class ChatRepository implements IChatRepository {
   async deleteChat(chatId: string): Promise<boolean> {
     const deletedChat = await ChatModel.findByIdAndDelete(chatId);
     return deletedChat ? true : false;
+  }
+  async getChatByParticipants(
+    participant1: string,
+    participant2: string
+  ): Promise<Chat | null> {
+    const chat = await ChatModel.findOne({
+      participants: {
+        $all: [participant1, participant2],
+      },
+    });
+    return chat ? ToChat(chat, chat.participants) : null;
   }
 }

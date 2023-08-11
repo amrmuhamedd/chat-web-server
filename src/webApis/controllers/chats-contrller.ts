@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { ChatRepository } from "../../infrastructure/db/repository/chatRepository";
 import { UserRepository } from "../../infrastructure/db/repository/userRepository";
-import { Chat } from "../../domain/entities/chat";
+import { Chat } from "@app/core/domain/entities/chat";
 
 export class ChatController {
   private chatRepository: ChatRepository;

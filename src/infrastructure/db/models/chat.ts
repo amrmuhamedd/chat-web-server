@@ -1,4 +1,4 @@
-import { IChat } from "@interfaces/models/chatModel";
+import { IChat } from "core/application/interfaces/models/chatModel";
 import mongoose, { Schema } from "mongoose";
 
 const chatSchema = new mongoose.Schema<IChat>({

@@ -1,5 +1,5 @@
-import { ContactRepository } from "core/application/interfaces/repository/contactRepository";
-import { Contact } from "core/domain/entities/contact";
+import { Contact } from "@app/core/domain/entities/contact";
+import { ContactRepository } from "../../interfaces/repository/contactRepository";
 
 export class CreateContactInteractor {
   private contactRepository: ContactRepository;

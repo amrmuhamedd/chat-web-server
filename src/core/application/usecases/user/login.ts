@@ -1,8 +1,5 @@
-import { IUserRepository } from "core/application/interfaces/repository/userRepository";
-import {
-  comparePasswords,
-  generateAuthToken,
-} from "core/application/utils/auth";
+import { IUserRepository } from "../../interfaces/repository/userRepository";
+import { comparePasswords, generateAuthToken } from "../../utils/auth";
 
 export class LoginUserInteractor {
   private userRepository: IUserRepository;

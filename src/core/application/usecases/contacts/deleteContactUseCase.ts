@@ -1,4 +1,4 @@
-import { ContactRepository } from "core/application/interfaces/repository/contactRepository";
+import { ContactRepository } from "../../interfaces/repository/contactRepository";
 
 export class DeleteContactInteractor {
   private contactRepository: ContactRepository;
