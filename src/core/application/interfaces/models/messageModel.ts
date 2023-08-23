@@ -11,9 +11,9 @@ export interface IMessage extends Document {
     receiver: IUser;
     sender: IUser;
     userData?: IUser;
-    sent: boolean;
-    received: boolean;
-    read: boolean;
+    sent?: boolean;
+    received?: boolean;
+    read?: boolean;
     isForwarded?: boolean;
   };
   chatId: IChat;

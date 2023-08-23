@@ -1,13 +1,14 @@
-import { User } from "@app/core/domain/entities/user";
 import { IChatRepository } from "../../interfaces/repository/chatRepository";
 import { IMessageRepository } from "../../interfaces/repository/messageRepository";
 import { Chat } from "@app/core/domain/entities/chat";
 import { Message } from "@app/core/domain/entities/message";
+import { IUserRepository } from "../../interfaces/repository/userRepository";
+import { UserRepository } from "@app/infrastructure/db/repository/userRepository";
 
 export class SendMessageUseCase {
   private chatRepository: IChatRepository;
   private messageRepository: IMessageRepository;
-
+private userRepo : IUserRepository =new  UserRepository()
   constructor(
     chatRepository: IChatRepository,
     messageRepository: IMessageRepository
@@ -17,13 +18,18 @@ export class SendMessageUseCase {
   }
 
   async sendMessage(
-    sender: User,
-    receiver: User,
-    messageText: string
-  ): Promise<void> {
+    senderId: string,
+    receiverId: string,
+    messageText: string,
+  ): Promise<Message> {
     // Check if a chat already exists between sender and receiver
+    const sender = await this.userRepo.getUserById(senderId);
+    const receiver = await this.userRepo.getUserById(receiverId);
+    if(!sender)  throw new Error("sender should be exist user");
+    if(!receiver)  throw new Error("sender should be exist user");
+
     let chat = await this.chatRepository.getChatByParticipants(
-      sender.getId(),
+      sender?.getId(),
       receiver.getId()
     );
 
@@ -47,6 +53,6 @@ export class SendMessageUseCase {
     });
 
     // Save the message to the database
-    await this.messageRepository.createMessage(message);
+  return  await this.messageRepository.createMessage(message);
   }
 }

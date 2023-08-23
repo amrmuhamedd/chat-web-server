@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
-import { Message } from "domain/entities/message";
-import { IMessageRepository } from "@interfaces/data-access/messageRepository";
+import { Message } from "@app/core/domain/entities/message";
+import { IMessageRepository } from "@app/core/application/interfaces/repository/messageRepository"; 
 import { MessageModel } from "../models/message";
 import { ChatModel } from "infrastructure/db/models/chat";
 import { toMessagesMapper } from "infrastructure/db/mapper/message";
@@ -36,7 +36,7 @@ class MessageRepository implements IMessageRepository {
       }
 
       const messages = await MessageModel.find({ chatId }).populate(
-        "meta.receiver meta.sender meta.userData replyOf"
+        "meta.receiver meta.sender meta.userData"
       );
       return toMessagesMapper(messages);
     } catch (error) {

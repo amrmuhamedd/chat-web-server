@@ -10,7 +10,7 @@ export const ToChat = (chatDocument: IChat, participants: IUser[]): Chat => {
   );
 
   const chatParticipants = chatDocument.participants.map((participantId) => {
-    const participant = participantsMap.get(participantId.toString());
+    const participant = participantsMap.get(participantId._id.toString());
     if (!participant) {
       throw new Error(`Participant with ID ${participantId} not found.`);
     }

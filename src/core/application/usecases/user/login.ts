@@ -18,7 +18,7 @@ export class LoginUserInteractor {
 
       const isPasswordValid = await comparePasswords(
         password,
-        user.getPassword()
+        user.getPassword(),
       );
 
       if (!isPasswordValid) {

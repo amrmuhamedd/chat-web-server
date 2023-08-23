@@ -1,30 +1,29 @@
-import express from "express";
-import { MessageController } from "@adapters/controllers/messages-controller";
+import { Router } from "express";
+import { MessageController } from "../controllers/messages-controller";
 import { MessageRepository } from "infrastructure/db/repository/messageRepository";
-import { CreateMessageInteractor } from "@useCases/messages/createMessageUseCase";
-import { ListMessagesByChatIdInteractor } from "@useCases/messages/listMessagesByChatIdUseCase";
+import { ListMessagesByChatIdInteractor } from "@app/core/application/usecases/messages/listMessagesByChatIdUseCase";
+import { SendMessageUseCase } from "@app/core/application/usecases/messages/sendMessageUseCase";
+import { ChatRepository } from "@app/infrastructure/db/repository/chatRepository";
 
-const router = express.Router();
 
-const messageRepository = new MessageRepository();
-const createMessageInteractor = new CreateMessageInteractor(messageRepository);
-const listMessagesByChatIdInteractor = new ListMessagesByChatIdInteractor(
-  messageRepository
-);
-
-const messageController = new MessageController(
-  createMessageInteractor,
-  listMessagesByChatIdInteractor
-);
-
-// Define routes
-router.post(
-  "/messages",
-  messageController.createMessage.bind(messageController)
-);
-router.get(
-  "/messages/:chatId",
-  messageController.listMessagesByChatId.bind(messageController)
-);
-
-export { router as messageRoutes };
+export function messageRoutes(router: Router) {
+  const messageRepository = new MessageRepository();
+  const chatRepository = new ChatRepository();
+  const createMessageInteractor = new SendMessageUseCase(chatRepository , messageRepository);
+  const listMessagesByChatIdInteractor = new ListMessagesByChatIdInteractor(
+    messageRepository
+  );
+  const messageController = new MessageController(
+    createMessageInteractor,
+    listMessagesByChatIdInteractor
+  );
+  router.post(
+    "/messages/send",
+    messageController.createMessage.bind(messageController)
+  );
+  router.get(
+    "/messages/:chatId",
+    messageController.listMessagesByChatId.bind(messageController)
+  );
+  
+}

@@ -3,21 +3,22 @@ import { SendMessageUseCase } from "@app/core/application/usecases/messages/send
 import { Request, Response, NextFunction } from "express";
 
 export class MessageController {
-  private createMessageInteractor: SendMessageUseCase;
+  private sendMessageUseCase: SendMessageUseCase;
   private listMessagesByChatIdInteractor: ListMessagesByChatIdInteractor;
 
   constructor(
     createMessageInteractor: SendMessageUseCase,
     listMessagesByChatIdInteractor: ListMessagesByChatIdInteractor
   ) {
-    this.createMessageInteractor = createMessageInteractor;
+    this.sendMessageUseCase = createMessageInteractor;
     this.listMessagesByChatIdInteractor = listMessagesByChatIdInteractor;
   }
 
   async createMessage(req: Request, res: Response, next: NextFunction) {
     try {
-      const { chatId, senderId, receiverId, text, time } = req.body;
-      const message = await this.createMessageInteractor.sendMessage();
+      const {senderId, receiverId, text } = req.body;
+      
+      const message = await this.sendMessageUseCase.sendMessage(senderId , receiverId , text);
       res.json(message);
     } catch (error) {
       next(error);

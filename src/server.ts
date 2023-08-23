@@ -3,6 +3,7 @@ import express, { Express, Request, Response, NextFunction } from "express";
 
 import { connectToMongoDB } from "./infrastructure/mongodb/mongodb";
 import { authRoutes } from "webApis/routes/auth-routes";
+import { messageRoutes } from "./webApis/routes/messages-routes";
 
 const app: Express = express();
 const port = 3000; // Set your desired port number
@@ -12,7 +13,7 @@ app.use(express.json()); // Parse incoming JSON data
 
 // Set up routes
 authRoutes(app);
-
+messageRoutes(app)
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("Error:", err.message);
