@@ -1,4 +1,4 @@
-import { IContact } from "@interfaces/models/contact";
+import { IContact } from "@app/core/application/interfaces/models/contact";
 import mongoose, { Schema } from "mongoose";
 
 const contactSchema = new mongoose.Schema<IContact>({

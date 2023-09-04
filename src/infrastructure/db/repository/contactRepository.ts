@@ -1,6 +1,6 @@
-import { ContactRepository } from "@interfaces/data-access/contactRepository";
+import { ContactRepository } from "@app/core/application/interfaces/repository/contactRepository";
 import { ContactModel } from "../models/contact";
-import { Contact } from "domain/entities/contact";
+import { Contact } from "@app/core/domain/entities/contact";
 import { ToContact } from "infrastructure/db/mapper/contact";
 
 export class MongoDBContactRepository implements ContactRepository {
